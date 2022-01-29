@@ -1,0 +1,1 @@
+From Pluralsight course: https://app.pluralsight.com/library/courses/c-sharp-design-patterns-singleton/table-of-contents
