@@ -18,22 +18,27 @@ namespace CommandPattern
 
         public bool CanExecute()
         {
-            return blockToStackOn.freeTop && block.freeTop;
+            return blockToStackOn.FreeTop && block.FreeTop;
         }
 
         public void Execute()
         {
             if (CanExecute())
             {
-                blockToStackOn.freeTop = false;
-                block.onBlock = blockToStackOn;
+                if (block.OnBlock is not null)
+                {
+                    block.OnBlock.FreeTop = true;
+                }
+                
+                blockToStackOn.FreeTop = false;
+                block.OnBlock = blockToStackOn;
             }
         }
 
         public void Undo()
         {
-            blockToStackOn.freeTop = true;
-            block.onBlock = null;
+            blockToStackOn.FreeTop = true;
+            block.OnBlock = null;
         }
     }
 }

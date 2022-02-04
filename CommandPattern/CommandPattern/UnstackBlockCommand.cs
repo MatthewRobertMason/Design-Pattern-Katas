@@ -14,20 +14,20 @@ namespace CommandPattern
         public UnstackBlockCommand(Block block)
         {
             this.block = block;
-            this.blockStackedOn = block.onBlock;
+            this.blockStackedOn = block.OnBlock;
         }
 
         public bool CanExecute()
         {
-            return block.freeTop && block.onBlock != null;
+            return block.FreeTop && block.OnBlock != null;
         }
 
         public void Execute()
         {
-            if (CanExecute() && block.onBlock != null)
+            if (CanExecute() && block.OnBlock != null)
             {
-                block.onBlock.freeTop = true;
-                block.onBlock = null;
+                block.OnBlock.FreeTop = true;
+                block.OnBlock = null;
             }
         }
 
@@ -35,8 +35,8 @@ namespace CommandPattern
         {
             if (blockStackedOn != null)
             {
-                blockStackedOn.freeTop = false;
-                block.onBlock = blockStackedOn;
+                blockStackedOn.FreeTop = false;
+                block.OnBlock = blockStackedOn;
             }
         }
     }

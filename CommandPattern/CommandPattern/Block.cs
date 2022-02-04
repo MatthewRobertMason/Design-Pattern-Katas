@@ -8,15 +8,15 @@ namespace CommandPattern
 {
     public class Block
     {
-        public string name;
-        public Block? onBlock;
-        public bool freeTop;
+        public string Name { get; set; }
+        public Block? OnBlock { get; set; }
+        public bool FreeTop { get; set; }
 
         public Block(string name)
         {
-            this.name = name;
-            onBlock = null;
-            freeTop = true;
+            this.Name = name;
+            OnBlock = null;
+            FreeTop = true;
         }
     }
 }

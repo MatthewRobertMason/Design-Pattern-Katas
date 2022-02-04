@@ -17,14 +17,20 @@ namespace CommandPattern
 
         public void Invoke(ICommand command)
         {
-            command.Execute();
-            commands.Push(command);
+            if (command.CanExecute())
+            {
+                command.Execute();
+                commands.Push(command);
+            }
         }
 
         public void Undo()
         {
-            ICommand command = commands.Pop();
-            command?.Undo();
+            if (commands.Count > 0)
+            {
+                ICommand command = commands.Pop();
+                command?.Undo();
+            }
         }
 
         public void UndoAll()

@@ -28,7 +28,7 @@ namespace CommandPatternTests
             ICommand stack = new StackBlockCommand(blocks[0], blocks[1]);
             commandManager.Invoke(stack);
 
-            Assert.True(blocks[0].freeTop && !blocks[1].freeTop);
+            Assert.True(blocks[0].FreeTop && !blocks[1].FreeTop);
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace CommandPatternTests
             commandManager.Invoke(stack);
             commandManager.Undo();
 
-            Assert.True(blocks[0].freeTop && blocks[1].freeTop);
+            Assert.True(blocks[0].FreeTop && blocks[1].FreeTop);
         }
 
         [Test]
@@ -49,7 +49,7 @@ namespace CommandPatternTests
             ICommand unStack = new UnstackBlockCommand(blocks[0]);
             commandManager.Invoke(unStack);
 
-            Assert.True(blocks[0].freeTop && blocks[1].freeTop);
+            Assert.True(blocks[0].FreeTop && blocks[1].FreeTop);
         }
 
         [Test]
@@ -61,7 +61,7 @@ namespace CommandPatternTests
             commandManager.Invoke(unStack);
             commandManager.Undo();
 
-            Assert.True(blocks[0].freeTop && !blocks[1].freeTop);
+            Assert.True(blocks[0].FreeTop && !blocks[1].FreeTop);
         }
 
         [Test]
@@ -74,7 +74,7 @@ namespace CommandPatternTests
             ICommand stack3 = new StackBlockCommand(blocks[0], blocks[1]);
             commandManager.Invoke(stack3);
 
-            Assert.True(blocks[0].freeTop && !blocks[1].freeTop && !blocks[2].freeTop && !blocks[3].freeTop);
+            Assert.True(blocks[0].FreeTop && !blocks[1].FreeTop && !blocks[2].FreeTop && !blocks[3].FreeTop);
         }
 
         [Test]
@@ -89,7 +89,7 @@ namespace CommandPatternTests
 
             commandManager.UndoAll();
 
-            Assert.True(blocks[0].freeTop && blocks[1].freeTop && blocks[2].freeTop && blocks[3].freeTop);
+            Assert.True(blocks[0].FreeTop && blocks[1].FreeTop && blocks[2].FreeTop && blocks[3].FreeTop);
         }
     }
 }
